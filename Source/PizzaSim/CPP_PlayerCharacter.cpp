@@ -19,8 +19,8 @@ ACPP_PlayerCharacter::ACPP_PlayerCharacter()
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -90.0f), FQuat(FRotator(0.0f, -90.0f, 0.0f)));
 
 	// Attach components to skeletal mesh
-	springArmComp->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	cameraComp->AttachToComponent(springArmComp, FAttachmentTransformRules::SnapToTargetNotIncludingScale, USpringArmComponent::SocketName);
+	springArmComp->SetupAttachment(GetMesh());
+	cameraComp->SetupAttachment(springArmComp, USpringArmComponent::SocketName);
 
 	// Set defaults
 	springArmComp->bUsePawnControlRotation = true;
